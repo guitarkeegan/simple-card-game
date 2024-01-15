@@ -9,7 +9,7 @@ import (
 func main() {
 	var userInput string
 
-	fmt.Print("Play high or rand? ")
+	fmt.Print("Play high or rand? (type high or rand): ")
 	_, err := fmt.Scanln(&userInput)
 	if err != nil {
 		fmt.Println("Error reading input:", err)

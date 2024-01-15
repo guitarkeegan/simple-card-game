@@ -44,8 +44,8 @@ func playHigh() {
 
 	var draw bool
 
-	fmt.Printf("You have: %d\n", randIdx1)
-	fmt.Println("Stay with this or choose another card? True or False?")
+	fmt.Printf("You have: %d.\n", randIdx1)
+	fmt.Println("Stay with this (0) or choose another card (1)?")
 	_, err := fmt.Scanln(&draw)
 	if err != nil {
 		fmt.Println(err)
@@ -59,6 +59,8 @@ func playHigh() {
 
 	if randIdx1 > randIdx2 {
 		fmt.Println("You won!")
+	} else if randIdx1 == randIdx2 {
+		fmt.Println("Tie!")
 	} else {
 		fmt.Println("Sorry, you lost.")
 	}
