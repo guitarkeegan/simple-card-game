@@ -15,22 +15,49 @@ func PlayGame(userInput *string) {
 	}
 }
 
-func playRand() {
-
+func getUserInput() int {
 	var choice int
 	fmt.Println("Guess a number between 1 and 10")
 	_, err := fmt.Scanln(&choice)
 	if err != nil {
 		fmt.Println("problem gettig input")
 	}
+	return choice
+}
 
-	num := rand.Intn(10) + 1
+func playAgain() bool {
+	var choice bool
+	fmt.Println("Play again? 1 for yes, 0 for no.")
+	_, err := fmt.Scanln(&choice)
+	if err != nil {
+		fmt.Println("problem gettig input")
+	}
+	return choice
+}
 
-	fmt.Printf("the random number is: %d, and you chose %d\n", num, choice)
-	if num == choice {
-		fmt.Println("You won!")
-	} else {
-		fmt.Println("You lost. Sorry!")
+func playRand() {
+
+	gameOn := true
+	for gameOn {
+
+		num := rand.Intn(10) + 1
+
+		var choice int
+
+		for choice != num {
+
+			choice = getUserInput()
+
+			fmt.Printf("You chose %d\n", choice)
+			if num > choice {
+				fmt.Println("Too small")
+			} else if num < choice {
+				fmt.Println("Too big")
+			} else {
+				fmt.Printf("You got it! Random number way %v\n", num)
+			}
+		}
+		gameOn = playAgain()
 	}
 }
 
